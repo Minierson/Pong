@@ -49,6 +49,7 @@ function drawBall(){
   ctx.arc(pos_x,pos_y,ballRadius,0,2*Math.PI);
   ctx.fill();
   ctx.stroke();
+  if(pos_x >= 0 && pos_x <= canvasWidth){
   pos_x = pos_x + dir_x * spd;
   pos_y = pos_y + dir_y * spd;
   if (pos_y >= pallet2Pos_y && pos_y <= pallet2Pos_y + 100 && pos_x >= canvasWidth - (ballRadius +10)) dir_x = -1;
@@ -56,6 +57,11 @@ function drawBall(){
   if (pos_y >= canvasHeigth - ballRadius)dir_y = -1;
   if (pos_y <=ballRadius) dir_y = 1;
   requestAnimationFrame(drawBall);
+} else{
+  pos_x = pos_x + dir_x * spd;
+  pos_y = pos_y + dir_y * spd;
+requestAnimationFrame(drawBall);
+};
 }
 
 function drawPallet1(){
